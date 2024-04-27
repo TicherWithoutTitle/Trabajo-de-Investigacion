@@ -1,0 +1,6 @@
+https://numpy.org/doc/stable/reference/arrays.ndarray.html
+https://numpy.org/doc/stable/reference/generated/numpy.max.html
+https://numpy.org/doc/stable/reference/generated/numpy.ndarray.sort.html
+https://numpy.org/doc/stable/reference/generated/numpy.ndarray.tofile.html
+https://stackoverflow.com/questions/20774607/python-for-loop-inside-print
+https://pythonassets.com/posts/browse-file-or-folder-in-tk-tkinter/
