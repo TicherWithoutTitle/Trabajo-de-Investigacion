@@ -14,7 +14,7 @@ import classTrabajadorModule.trabajador as trab
 class ListaTrabajadores:
     #atributos:
     __lista__:np.ndarray
-    __flag__:bool                               #saber si se encuentra ordenado
+    __ordenado__:bool                               #saber si se encuentra ordenado
     #fin atributos
     
     def __init__(self):
@@ -22,7 +22,7 @@ class ListaTrabajadores:
         Purpose: Iniciador de la lista
         """
         self.__lista__=np.ndarray(0,dtype=trab.Trabajador)
-        self.__flag__=False
+        self.__ordenado__=False
     # end Init
     
     def getLista(self):                         #retorna la lista de trabajadores
@@ -34,13 +34,13 @@ class ListaTrabajadores:
     # end def
 
     def agregarTrabajador(self):                #agrega un trabajador a la lista
-        self.__flag__=False
+        self.__ordenado__=False
         self.__lista__.resize(self.__lista__.size+1)
         nombre=input("Nombre: ")
         direccion=input("Direccion: ")
         sueldo=float(input("Sueldo: ").replace(",","."))
-        flag=True
-        while(flag):
+        ordenado=True
+        while(ordenado):
             horaIngreso=float(input("Hora de Ingreso: "))
             minutosIngreso=float(input("Minuto de Ingreso: "))
             horaEgreso=float(input("Hora de Egreso: "))
@@ -48,14 +48,14 @@ class ListaTrabajadores:
             ingreso=dt.timedelta(minutes=minutosIngreso,hours=horaIngreso)
             egreso=dt.timedelta(minutes=minutosEgreso,hours=horaEgreso)
             if(ingreso<egreso):
-                flag=False
+                ordenado=False
             else:
                 print("El horario de salida es anterior al de llegada, escribalo correctamente")
         self.__lista__[self.__lista__.size-1]=trab.Trabajador(nombre,direccion,sueldo,ingreso,egreso)
     # end def
         
     def ordenarPorSueldo(self):                 #ordena la lista por sueldo de menor a mayor
-        self.__flag__=True
+        self.__ordenado__=True
         self.__lista__.sort()
     # end def
 
@@ -81,13 +81,13 @@ class ListaTrabajadores:
     #end def
     
     def max(self):                              #devuelve el trabajador con sueldo mas alto
-        if(self.__flag__):                      #si esta ordenado devuelve el ultimo
+        if(self.__ordenado__):                      #si esta ordenado devuelve el ultimo
             return self.__lista__[-1]
         return self.__lista__.max()
     # end def
     
     def min(self):                              #devuelve el trabajador con sueldo mas bajo
-        if(self.__flag__):                      #si esta ordenado devuelve el primero
+        if(self.__ordenado__):                      #si esta ordenado devuelve el primero
             self.__lista__[0]
         return self.__lista__.min()
     # end def
