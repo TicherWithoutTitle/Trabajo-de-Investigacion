@@ -39,8 +39,8 @@ class ListaTrabajadores:
         nombre=input("Nombre: ")
         direccion=input("Direccion: ")
         sueldo=float(input("Sueldo: ").replace(",","."))
-        ordenado=True
-        while(ordenado):
+        flag=True
+        while(flag):
             horaIngreso=float(input("Hora de Ingreso: "))
             minutosIngreso=float(input("Minuto de Ingreso: "))
             horaEgreso=float(input("Hora de Egreso: "))
@@ -48,7 +48,7 @@ class ListaTrabajadores:
             ingreso=dt.timedelta(minutes=minutosIngreso,hours=horaIngreso)
             egreso=dt.timedelta(minutes=minutosEgreso,hours=horaEgreso)
             if(ingreso<egreso):
-                ordenado=False
+                flag=False
             else:
                 print("El horario de salida es anterior al de llegada, escribalo correctamente")
         self.__lista__[self.__lista__.size-1]=trab.Trabajador(nombre,direccion,sueldo,ingreso,egreso)
